@@ -22,6 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 $string['pluginname'] = 'YuJa for TinyMCE';
-$string['yuja:notready'] = 'The YuJa Media Selector is still loading your YuJa content. Try again in a few seconds.';
-$string['yuja:phperror'] = 'The YuJa Media Selector experienced an error.  Please ensure your configuration information is correct and try refreshing the page. If the error persists, please contact YuJa Support.';
-$string['yuja:loadingerror'] = 'The YuJa Media Selector experienced an error while loading videos.  Please ensure your configuration information is correct and try refreshing the page. If the error persists, please contact YuJa Support.';
+$string['yuja:notready'] = 'The YuJa media selector is still loading your YuJa content. Try again in a few seconds.';
+$string['yuja:phperror'] = 'The YuJa media selector experienced an error.  Please ensure your configuration information is correct and try refreshing the page. If the error persists, please contact YuJa support.';
+$string['yuja:loadingerror'] = 'The YuJa media selector experienced an error while loading videos.  Please ensure your configuration information is correct and try refreshing the page. If the error persists, please contact YuJa support.';

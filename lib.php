@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die('Must access from moodle');
 
 global $CFG;
 require_once($CFG->dirroot . '/local/yuja/lib.php');
-require_once('yuja_client.class.php');
+require_once($CFG->dirroot . '/local/yuja/classes/local_yuja/yuja_client.class.php');
 
 /**
  * TinyMce Plugin for Yuja
