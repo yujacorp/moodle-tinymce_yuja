@@ -34,10 +34,9 @@ require_once($CFG->dirroot . '/local/yuja/classes/local_yuja/yuja_client.class.p
 class tinymce_yuja extends editor_tinymce_plugin {
     /** @var array list of buttons defined by this plugin */
     protected $buttons = array('yuja');
-    
     /**
      * Update parameters
-     * @param mixed $params
+     * @param mixed &$params
      * @param mixed $context
      * @param mixed $options
      * @return void
