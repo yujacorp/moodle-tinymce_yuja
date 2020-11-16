@@ -36,9 +36,9 @@ class tinymce_yuja extends editor_tinymce_plugin {
     protected $buttons = array('yuja');
     /**
      * Update parameters
-     * @param mixed &$params
-     * @param mixed $context
-     * @param mixed $options
+     * @param array &$params
+     * @param context $context
+     * @param array $options
      * @return void
      */
     protected function update_init_params(array &$params, context $context, array $options = null) {
