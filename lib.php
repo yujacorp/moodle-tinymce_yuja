@@ -41,7 +41,7 @@ class tinymce_yuja extends editor_tinymce_plugin {
      * @param array $options
      * @return void
      */
-    protected function update_init_params(array &$params, context $context, array $options = null) {
+    protected function update_init_params(&$params, $context, $options = null) {
         $yujaclient = new yuja_client();
         $params = $params + $yujaclient->get_texteditor_params();
 
