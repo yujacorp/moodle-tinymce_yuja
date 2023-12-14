@@ -23,6 +23,7 @@
 
 (function() {
 
+	var handlerLoaded = false;
     /**
      * Load script
      * @param {*} url
@@ -30,6 +31,46 @@
     function loadScript(url) {
         var script = document.createElement('script');
         script.src = url;
+        (document.body || document.head || document.documentElement).appendChild(script);
+    }
+
+    function loadIframe(url, ed) {
+        var script = document.createElement('script');
+        script.onload = function () {
+            require(['jquery'], function($) {
+                $("#yujaVideoChooserIFrame").attr('src',url);
+                
+                if (!handlerLoaded) {
+                    if (window.addEventListener) {  // all browsers except IE before version 9
+                        window.addEventListener ("message", OnMessage, false);
+                    } else {
+                        if (window.attachEvent) {   // IE before version 9
+                            window.attachEvent("onmessage", OnMessage);
+                        }
+                    }
+                    
+                    function OnMessage(event) {
+                        if(event.data.type == "getVideo") {
+            
+                            function embedHandler(embedString) {
+                                ed.execCommand('mceInsertContent', false, embedString);
+                            }
+            
+                            var embedString = event.data.embed;
+                            embedHandler(embedString);
+                            
+                            require(['jquery'], function($) {
+                                $(".yuja-overlay").removeClass('yuja-overlay-visible');
+                                $("#yujaVideoChooserIFrame").attr('src',"");
+                            });
+                        }
+                    }
+
+                    handlerLoaded = true;
+                }
+            });
+        };
+        script.src = location.origin + "/local/yuja/media_selection.js";
         (document.body || document.head || document.documentElement).appendChild(script);
     }
 
@@ -349,8 +390,10 @@
 
             var mediaSelector = null;
             var params = {
+                ltiVersion: ed.getParam('ltiVersion', undefined),
                 videosUrl: ed.getParam('yujaVideosUrl', undefined),
                 jsUrl: ed.getParam('yujaJsUrl', undefined),
+                lti3LoginInitiationUrl: ed.getParam('lti3LoginInitUrl', undefined),
                 error: ed.getParam('yujaError', undefined)
             };
 
@@ -391,6 +434,12 @@
 
             // Register the command so that it can be invoked by using tinyMCE.activeEditor.execCommand('mceExample');
             ed.addCommand('mceYuja', function() {
+
+                if (params.ltiVersion == "1.3") {
+                    loadIframe(params.lti3LoginInitiationUrl, ed);
+                    return;
+                }
+
                 var error = false;
                 if (!isYujaConnected) {
                     isYujaConnected = true;
