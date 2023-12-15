@@ -25,11 +25,11 @@
 defined('MOODLE_INTERNAL') || die('Must access from moodle');
 
 $plugin                     = new stdClass();
-$plugin->version            = 2019051002;
+$plugin->version            = 2023121400;
 $plugin->requires           = 2012120300;
 $plugin->component          = 'tinymce_yuja';
 $plugin->maturity           = MATURITY_STABLE;
 $plugin->release            = '2.0';
 $plugin->dependencies       = array(
-    'local_yuja' => 20190510
+    'local_yuja' => 2023121400
 );

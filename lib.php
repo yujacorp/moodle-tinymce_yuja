@@ -42,7 +42,7 @@ class tinymce_yuja extends editor_tinymce_plugin {
      */
     protected function update_init_params(array &$params, context $context, array $options = null) {
         $yujaclient = new yuja_client();
-        $params = $params + $yujaclient->get_texteditor_params();
+        $params = $params + $yujaclient->get_texteditor_params('tinymce');
 
         // Add button after 'spellchecker' in advancedbuttons3.
         $this->add_button_after($params, 3, 'yuja', 'spellchecker');
